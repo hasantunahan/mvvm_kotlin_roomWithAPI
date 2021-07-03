@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.tashteam.reqres_kotlin.model.Reqres" />
+
+        <variable
+            name="listener"
+            type="com.tashteam.reqres_kotlin.app.listener.ItemClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{listener::setItemClickListener}">
+
+        <TextView
+            android:id="@+id/reqresImageUUID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(data.uuid)}"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </TextView>
+
+        <ImageView
+            android:id="@+id/reqresImageView"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:bindingImageview="@{data.avatar}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/fullNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@{data.firstName}"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/reqresImageView"
+            app:layout_constraintStart_toEndOf="@+id/reqresImageView"
+            app:layout_constraintTop_toTopOf="@+id/reqresImageView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
